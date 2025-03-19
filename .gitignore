@@ -1,0 +1,15 @@
+
+# Frontend
+.env
+node_modules/
+build/
+dist/
+*.log
+
+# General
+
+.DS_Store
+Thumbs.db
+*.tmp
+*.cache/
+*.pack
