@@ -190,8 +190,7 @@ function InventoryOverview({
                 </div>
                 <Progress
                   value={categoryItem.stockPercentage}
-                  className="h-2"
-                  indicatorClassName="bg-green-500"
+                  className="h-2 [&>div]:bg-green-500"
                 />
               </div>
             ))

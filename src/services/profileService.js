@@ -11,14 +11,21 @@ const getHeaders = (isJson = true) => {
 
 // Centralized fetch helper
 const fetchWithErrorHandling = async (url, options = {}) => {
-  const response = await fetch(url, options);
-  const data = await response.json();
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-  if (!response.ok) {
-    throw new Error(data.error || "Something went wrong.");
+    if (!response.ok) {
+      throw new Error(data.error || `HTTP error! status: ${response.status}`);
+    }
+
+    return data;
+  } catch (error) {
+    if (error.name === "TypeError" && error.message === "Failed to fetch") {
+      throw new Error("Network error: Unable to connect to the server");
+    }
+    throw error;
   }
-
-  return data;
 };
 
 export const profileService = {

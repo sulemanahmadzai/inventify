@@ -111,7 +111,7 @@ const Login = () => {
               <GoogleLogin
                 onSuccess={handleGoogleSuccess}
                 onError={handleGoogleError}
-                width="100%"
+                width="300"
               />
             </GoogleOAuthProvider>
           </div>

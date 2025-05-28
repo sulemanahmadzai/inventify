@@ -15,7 +15,7 @@ const apiClient = axios.create({
 // Intercept requests for adding tokens
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authToken"); // Assuming token is stored in localStorage
+    const token = localStorage.getItem("token"); // Changed from authToken to token
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -35,7 +35,7 @@ apiClient.interceptors.response.use(
       if (status === 401) {
         console.error("Unauthorized! Redirecting to login...");
         // Clear token and redirect to login
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("token"); // Changed from authToken to token
         window.location.href = "/login"; // Update with your login route
       } else if (status >= 500) {
         console.error("Server error! Please try again later.");
